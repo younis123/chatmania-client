@@ -9,9 +9,13 @@ export default function Home() {
   const createRoom = async () => {
     try {
       console.log("Creating room:", roomName);
-      const response = await axios.post("http://localhost:5000/rooms/create", {
-        name: roomName,
-      });
+
+      // ✅ Use your Render backend instead of localhost
+      const response = await axios.post(
+        "https://chatmania-server.onrender.com/rooms/create",
+        { name: roomName }
+      );
+
       console.log("Room created successfully:", response.data);
 
       // ✅ Redirect to room page
